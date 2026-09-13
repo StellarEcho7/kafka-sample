@@ -1,6 +1,8 @@
+import { KafkaTopic } from '../kafka.constants';
+
 export interface OrderCreatedEvent {
   eventId: string;
-  eventType: 'order.created';
+  eventType: KafkaTopic;
   occurredAt: string;
 
   data: {
