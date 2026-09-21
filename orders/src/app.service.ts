@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 import { randomUUID } from 'node:crypto';
-import { OrderCreatedEvent } from '../../libs/kafka/events/order-created.event';
-import { ORDER_CREATED_TOPIC } from '../../libs/kafka/kafka.constants';
+import { OrderCreatedEvent, ORDER_CREATED_TOPIC } from '@app/kafka';
 
 @Injectable()
 export class AppService {
