@@ -1,10 +1,12 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 import { randomUUID } from 'node:crypto';
 import { OrderCreatedEvent, ORDER_CREATED_TOPIC } from '@app/kafka';
 
 @Injectable()
 export class AppService {
+  private readonly logger = new Logger(AppService.name);
+
   constructor(
     @Inject('KAFKA_CLIENT')
     private readonly kafka: ClientKafka,
@@ -40,6 +42,7 @@ export class AppService {
       },
     };
 
+    this.logger.log(`[ORDERS] Order created: ${event.data.orderId}`);
     this.kafka.emit(ORDER_CREATED_TOPIC, event);
 
     return order;

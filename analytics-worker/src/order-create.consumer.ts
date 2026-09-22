@@ -9,9 +9,9 @@ export class OrderCreatedConsumer {
 
   @EventPattern(ORDER_CREATED_TOPIC)
   handleOrderCreated(@Payload() event: event.OrderCreatedEvent) {
-    this.logger.log(`[NOTIFICATION] Order created: ${event.data.orderId}`);
+    this.logger.log(`[ANALYTICS] Order created: ${event.data.orderId}`);
 
-    // await this.notificationService.sendOrderCreatedNotification(
+    // await this.analyticsService.sendOrderCreatedAnalytics(
     //   event.data.userId,
     //   event.data.orderId,
     // );
